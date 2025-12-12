@@ -16,6 +16,26 @@ public class Lista {
             temp.setNext(n);
         }
     }
+
+    public void addHead(Nodo n) {
+        Nodo temp = root;
+        root = n;
+        n.setNext(temp);
+    }
+
+    public void add(String s) {
+        Nodo n = new Nodo(s);
+        addTail(n);
+    }
+
+    public void remove ( String s ) {
+        //da fare a casa;
+    }
+
+    public boolean exists( String s){
+        return true;
+        //da fare a casa;
+    }
     
     public String toString() {
         String s = "La lista contiene: ";

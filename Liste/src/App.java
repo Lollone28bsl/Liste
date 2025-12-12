@@ -3,7 +3,8 @@ public class App {
         Lista l = new Lista();
         l.addTail(new Nodo("Mario"));
         l.addTail(new Nodo("Giulio"));
-        l.addTail(new Nodo("Francesco"));
+        l.addHead(new Nodo("Francesco"));
+        l.add("Juve magica Juve");
         System.out.println(l);
     }
 }
