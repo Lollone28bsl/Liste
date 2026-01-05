@@ -1,75 +1,101 @@
-public class Lista {
-    Nodo root;
+class Lista {
+    private Nodo head;
+    private Nodo tail;
+    private int size;
+
 
     public Lista() {
-        root = null;
+        head = null;
+        tail = null;
+        size = 0;
     }
 
-    public void addTail(Nodo n) {
-        if (root == null) {
-            root = n;
+    public void inserisciInTesta(int valore) {
+        Nodo nuovo = new Nodo(valore);
+
+        if (head == null) {
+            head = tail = nuovo;
         } else {
-            Nodo temp = root;
-            while (temp.getNext() != null) {
-                temp = temp.getNext();
-            }
-            temp.setNext(n);
+            nuovo.next = head;
+            head.prev = nuovo;
+            head = nuovo;
         }
+        size++;
     }
 
-    public void addHead(Nodo n) {
-        Nodo temp = root;
-        root = n;
-        n.setNext(temp);
-    }
+    public void inserisciInCoda(int valore) {
+        Nodo nuovo = new Nodo(valore);
 
-    public void add(String s) {
-        Nodo n = new Nodo(s);
-        addTail(n);
-    }
+        if (tail == null) {
+            head = tail = nuovo;
+        } else {
+            tail.next = nuovo;
+            nuovo.prev = tail;
+            tail = nuovo;
+        }
+        size++;
+        }
 
-    public void remove(String s) {
-        if (root == null) return;
+    public void rimuoviTesta() {
+        if (head == null) return;
+        
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            head = head.next;
+            head.prev = null;
+        }
+            size--;
+        }
 
-        if (!exists(s)) return;
-
-        if (s == null ? root.getValue() == null : s.equals(root.getValue())) {
-            root = root.getNext();
+    public void rimuoviCoda() {
+        if (tail == null) 
             return;
-        }
 
-        Nodo prev = root;
-        Nodo curr = root.getNext();
-        while (curr != null) {
-            if (s == null ? curr.getValue() == null : s.equals(curr.getValue())) {
-                prev.setNext(curr.getNext());
-                return;
-            }
-            prev = curr;
-            curr = curr.getNext();
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            tail = tail.prev;
+            tail.next = null;
         }
+        size--;
     }
 
-    public boolean exists(String s) {
-        Nodo temp = root;
-        while (temp != null) {
-            if (s == null) {
-                if (temp.getValue() == null) return true;
-            } else {
-                if (s.equals(temp.getValue())) return true;
+    public boolean contiene(int valore) {
+        Nodo corrente = head;
+        
+        while (corrente != null) {
+            if (corrente.valore == valore) 
+                return true;
+                corrente = corrente.next;
             }
-            temp = temp.getNext();
-        }
         return false;
     }
 
-    public String toString() {
-        String s = "La lista contiene: ";
-        Nodo temp = root;
-        while (temp != null) {
-            s += temp.getValue() + " - ";
-            temp = temp.getNext();
+    public void stampaAvanti() {
+        Nodo corrente = head;
+        System.out.print("Lista (avanti): ");
+
+        while (corrente != null) {
+            System.out.print(corrente.valore + " ");
+            corrente = corrente.next;
         }
-        return s + "\n";
+        System.out.println();
+    }
+
+    public void stampaIndietro() {
+        Nodo corrente = tail;
+        System.out.print("Lista (indietro): ");
+
+        while (corrente != null) {
+            System.out.print(corrente.valore + " ");
+            corrente = corrente.prev;
+        }
+        System.out.println();
+    }
+
+
+    public int getSize() {
+        return size;
     }
 }

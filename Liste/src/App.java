@@ -1,16 +1,24 @@
 public class App {
-    public static void main(String[] args){
-        Lista l = new Lista();
-        l.addTail(new Nodo("Mario"));
-        l.addTail(new Nodo("Giulio"));
-        l.addHead(new Nodo("Francesco"));
-        l.add("Juve magica Juve");
-        System.out.println(l);
+    public static void main(String[] args) {
+    Lista lista = new Lista();
 
-        boolean esiste = l.exists("Mario");
-        System.out.println("Esiste 'Mario'? " + esiste);
+    lista.inserisciInTesta(10);
+    lista.inserisciInTesta(5);
+    lista.inserisciInCoda(20);
+    lista.inserisciInCoda(30);
 
-        l.remove("Giulio");
-        System.out.println("Dopo remove 'Giulio': " + l);
+    lista.stampaAvanti();
+    lista.stampaIndietro();
+
+    System.out.println("Contiene 20? " + lista.contiene(20));
+    System.out.println("Contiene 99? " + lista.contiene(99));
+
+    lista.rimuoviTesta();
+    lista.rimuoviCoda();
+
+    lista.stampaAvanti();
+    lista.stampaIndietro();
+    
+    System.out.println("Dimensione lista: " + lista.getSize());
     }
 }
