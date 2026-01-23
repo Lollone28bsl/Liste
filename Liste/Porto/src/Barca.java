@@ -1,5 +1,5 @@
 public class Barca {
-
+    
     String nome;
     String nazionalita;
     double lunghezza;

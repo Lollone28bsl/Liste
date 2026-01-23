@@ -5,16 +5,16 @@ public class App {
         Porto porto = new Porto();
 
         try {
-            Barca b1 = new Barca("Aurora", "Italia", 9, 5, "vela");
-            Barca b2 = new Barca("Titan", "Francia", 12, 8, "motore");
+            Barca b1 = new Barca("Porsche", "Italia", 9, 5, "vela");
+            Barca b2 = new Barca("Mora", "Francia", 12, 8, "motore");
 
             porto.assegnaPosto(b1);
             porto.assegnaPosto(b2);
 
-            Barca trovata = porto.cercaBarca(51);
-            System.out.println("Barca al posto 51: " + trovata.nome);
+            Barca trovata = porto.cercaBarca(1);
+            System.out.println("Barca al posto 1: " + trovata.nome);
 
-            double costo = porto.liberaPosto(51, 3);
+            double costo = porto.liberaPosto(1, 3);
             System.out.println("Costo affitto: " + costo + " €");
 
             porto.salvaSuFile();
@@ -29,3 +29,4 @@ public class App {
         }
     }
 }
+
